@@ -1,0 +1,24 @@
+steps:
+  - label: "generator"
+    plugins:
+      - JuliaCI/julia#v1:
+          persist_depot_dirs: packages,artifacts,compiled
+          version: "1.7"
+      - JuliaCI/merge-commit: ~
+    agents:
+      queue: "juliaecosystem"
+      arch:  "x86_64"
+      os:    "linux"
+      # Only run on "sandbox.jl" machines
+      sandbox_capable: "true"
+    if: build.message !~ /\[skip tests\]/
+    timeout_in_minutes: 10
+    env:
+      JULIA_PKG_SERVER: us-east.pkg.julialang.org
+    commands: |
+      echo "--- Setup Julia packages"
+      julia --color=yes --project=.buildkite -e 'import Pkg; Pkg.instantiate()'
+      julia --color=yes --project=.buildkite -e 'import Pkg; Pkg.precompile()'
+
+      echo "+++ Run generator"
+      julia --color=yes --project=.buildkite .buildkite/generator.jl
