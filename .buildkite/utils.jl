@@ -48,7 +48,7 @@ plugins() = [
         "persist_depot_dirs" => "packages,artifacts,compiled",
         "version" => "1.7"
     ),
-    "JuliaCI/merge-commit" => "~"
+    # "JuliaCI/merge-commit" => "~"
 ]
 
 wait_step() = Dict(:wait => "~")
