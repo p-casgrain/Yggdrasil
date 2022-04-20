@@ -167,7 +167,7 @@ for PROJECT in PROJECTS_ACCEPTED
 
     TREE_HASH = mktempdir() do TMP_PROJECT
         cp(PROJECT, TMP_PROJECT; follow_symlinks=true, force=true)
-        return julia(`-e "using Pkg; print(bytes2hex(Pkg.GitTools.tree_hash(\"$(TMP_PROJECT)\")))"`) |> readchomp
+        bytes2hex(Pkg.GitTools.tree_hash(TMP_PROJECT))
     end
     META_HASH = open(sha256, "$(TEMP)/$(NAME).meta.json") |> bytes2hex
     PROJ_HASH = sha256(TREE_HASH*META_HASH) |> bytes2hex
