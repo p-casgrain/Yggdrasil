@@ -48,10 +48,10 @@ plugins() = [
         "persist_depot_dirs" => "packages,artifacts,compiled",
         "version" => "1.7"
     ),
-    # "JuliaCI/merge-commit" => "~"
+    "JuliaCI/merge-commit" => nothing
 ]
 
-wait_step() = Dict(:wait => "~")
+wait_step() = Dict(:wait => nothing)
 group_step(name, steps) = Dict(:group => name, :steps => steps)
 
 function jll_init_step(NAME, PROJECT, BB_HASH, PROJ_HASH, SKIP_BUILD)
