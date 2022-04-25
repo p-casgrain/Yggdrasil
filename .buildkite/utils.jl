@@ -126,7 +126,9 @@ function build_step(NAME, PLATFORM, PROJECT, BB_HASH, PROJ_HASH)
             "PLATFORM" => PLATFORM,
             "PROJECT" => PROJECT,
             "BB_HASH" => BB_HASH,
-            "PROJ_HASH" => PROJ_HASH
+            "PROJ_HASH" => PROJ_HASH,
+            "BINARYBUILDER_USE_CCACHE" => "true",
+            "BINARYBUILDER_STORAGE_DIR" => "/cache/yggdrasil"
         )
     )
 end
