@@ -6,7 +6,7 @@ steps:
           version: "1.7"
       - JuliaCI/merge-commit: ~
     agents:
-      queue: "juliaecosystem"
+      queue: "yggdrasil"
       arch:  "x86_64"
       os:    "linux"
       # Only run on "sandbox.jl" machines

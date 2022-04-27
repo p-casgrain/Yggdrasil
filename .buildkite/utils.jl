@@ -37,7 +37,7 @@ function annotate(annotation; context="default", style="info", append=true)
 end
 
 agent() = Dict(
-    :queue => "juliaecosystem",
+    :queue => "yggdrasil",
     :arch => "x86_64",
     :os => "linux",
     :sandbox_capable => "true"
